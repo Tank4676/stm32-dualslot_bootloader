@@ -1,4 +1,4 @@
 ../Core/Src/app_jump.c:21:6:bootloader__jump_to_app	24	static,ignoring_inline_asm
 ../Core/Src/app_jump.c:42:9:is_app_valid	16	static
 ../Core/Src/app_jump.c:54:10:sw_crc32	32	static
-../Core/Src/app_jump.c:70:9:verify_app_crc	16	static
+../Core/Src/app_jump.c:70:9:verify_app_crc	88	static

@@ -69,12 +69,19 @@ uint32_t sw_crc32(uint32_t crc, const uint8_t *data, uint32_t len)
 
 uint8_t verify_app_crc(void)
 {
-	uint32_t computed = sw_crc32(0xFFFFFFFF, (uint8_t*)APP_START_ADDRESS, APP_SIZE - 4);
-	computed ^= 0xFFFFFFFF;
-	uint32_t stored = *((volatile uint32_t*)(APP_START_ADDRESS + APP_SIZE - 4));
+    uint32_t app_size = *((volatile uint32_t*)0x0801FFF8);
+    uint32_t stored_crc = *((volatile uint32_t*)0x0801FFFC);
 
+    uint32_t computed = sw_crc32(0xFFFFFFFF, (uint8_t*)APP_START_ADDRESS, app_size);
+    computed ^= 0xFFFFFFFF;
 
-    if(computed == stored)
+    char buf[64];
+    sprintf(buf, "Computed: 0x%08lX\r\n", computed);
+    HAL_UART_Transmit(&huart3, (uint8_t*)buf, strlen(buf), 100);
+    sprintf(buf, "Stored:   0x%08lX\r\n", stored_crc);
+    HAL_UART_Transmit(&huart3, (uint8_t*)buf, strlen(buf), 100);
+
+    if(computed == stored_crc)
         return 1;
     return 0;
 }

@@ -185,4 +185,9 @@ SECTIONS
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
+  
+  .metadata 0x0801FFF8 :
+{
+    KEEP(*(.metadata_section))
+} >FLASH
 }

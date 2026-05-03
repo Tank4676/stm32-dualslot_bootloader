@@ -61,6 +61,10 @@ static void MX_CRC_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* USER CODE BEGIN 0 */
+__attribute__((section(".metadata_section"))) __attribute__((used))
+const uint32_t app_metadata[2] = {0xFFFFFFFF, 0xFFFFFFFF};
+/* USER CODE END 0 */
 
 /* USER CODE END 0 */
 

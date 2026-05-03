@@ -2988,9 +2988,6 @@ LOAD /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
                 0x08006e90                        . = ALIGN (0x4)
                 0x08006e90                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08006e90        0x0
- .rel.iplt      0x08006e90        0x0 /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-
 .data           0x20000000       0x5c load address 0x08006e90
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
@@ -3151,26 +3148,35 @@ LOAD /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
                 0x00000718       0x22 /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a(_dvmd_tls.o)
  .ARM.attributes
                 0x0000073a       0x22 /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+
+.metadata       0x0801fff8        0x8
+ *(.metadata_section)
+ .metadata_section
+                0x0801fff8        0x8 ./Core/Src/main.o
+                0x0801fff8                app_metadata
 OUTPUT(app_v1.elf elf32-littlearm)
 LOAD linker stubs
 LOAD /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc.a
 LOAD /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
 LOAD /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/libgcc.a
 
-.debug_info     0x00000000     0x8370
- .debug_info    0x00000000      0xdb5 ./Core/Src/main.o
- .debug_info    0x00000db5      0xa4b ./Core/Src/stm32f4xx_hal_msp.o
- .debug_info    0x00001800      0x112 ./Core/Src/stm32f4xx_it.o
- .debug_info    0x00001912      0x168 ./Core/Src/sysmem.o
- .debug_info    0x00001a7a      0x54a ./Core/Src/system_stm32f4xx.o
- .debug_info    0x00001fc4       0x30 ./Core/Startup/startup_stm32f446zetx.o
- .debug_info    0x00001ff4      0x99a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_info    0x0000298e      0xdaa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_info    0x00003738      0x37f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o
- .debug_info    0x00003ab7      0x70b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_info    0x000041c2      0x8ff ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_info    0x00004ac1      0x960 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
- .debug_info    0x00005421     0x2f4f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+.rel.dyn        0x08020000        0x0
+ .rel.iplt      0x08020000        0x0 /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.linux64_1.0.100.202509120712/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+
+.debug_info     0x00000000     0x839b
+ .debug_info    0x00000000      0xde0 ./Core/Src/main.o
+ .debug_info    0x00000de0      0xa4b ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_info    0x0000182b      0x112 ./Core/Src/stm32f4xx_it.o
+ .debug_info    0x0000193d      0x168 ./Core/Src/sysmem.o
+ .debug_info    0x00001aa5      0x54a ./Core/Src/system_stm32f4xx.o
+ .debug_info    0x00001fef       0x30 ./Core/Startup/startup_stm32f446zetx.o
+ .debug_info    0x0000201f      0x99a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_info    0x000029b9      0xdaa ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_info    0x00003763      0x37f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o
+ .debug_info    0x00003ae2      0x70b ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_info    0x000041ed      0x8ff ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_info    0x00004aec      0x960 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
+ .debug_info    0x0000544c     0x2f4f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_abbrev   0x00000000     0x174f
  .debug_abbrev  0x00000000      0x28c ./Core/Src/main.o
@@ -3333,32 +3339,32 @@ LOAD /opt/st/stm32cubeide_2.0.0/plugins/com.st.stm32cube.ide.mcu.externaltools.g
  .debug_line    0x000058bc     0x1430 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
  .debug_line    0x00006cec     0x24af ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
-.debug_str      0x00000000    0xc8897
- .debug_str     0x00000000    0xc8897 ./Core/Src/main.o
-                              0xc6846 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Core/Src/stm32f4xx_hal_msp.o
+.debug_str      0x00000000    0xc88a4
+ .debug_str     0x00000000    0xc88a4 ./Core/Src/main.o
+                              0xc6853 (size before relaxing)
+ .debug_str     0x000c88a4        0x0 ./Core/Src/stm32f4xx_hal_msp.o
                               0xc2dfa (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Core/Src/stm32f4xx_it.o
+ .debug_str     0x000c88a4        0x0 ./Core/Src/stm32f4xx_it.o
                               0xc277d (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Core/Src/sysmem.o
+ .debug_str     0x000c88a4        0x0 ./Core/Src/sysmem.o
                                0x7765 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Core/Src/system_stm32f4xx.o
+ .debug_str     0x000c88a4        0x0 ./Core/Src/system_stm32f4xx.o
                               0xc28cc (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Core/Startup/startup_stm32f446zetx.o
+ .debug_str     0x000c88a4        0x0 ./Core/Startup/startup_stm32f446zetx.o
                                  0x67 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
                               0xc3491 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
                               0xc31e8 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o
                               0xc28d5 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
                               0xc2a47 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
                               0xc2d05 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o
                               0xc2d38 (size before relaxing)
- .debug_str     0x000c8897        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+ .debug_str     0x000c88a4        0x0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
                               0xc32bc (size before relaxing)
 
 .comment        0x00000000       0x43

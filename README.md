@@ -1,2 +1,2 @@
-# DUAL SLOT BOOTLOADER FOR STM32 F446ZET6 
-- This firmware is currently in the development stage. Features may change, and the code may contain bugs.
+# DUAL SLOT BOOTLOADER/SINGLE SLOT BOOTLOADER FOR STM32F446ZE
+-The dual slot firmware is currently under the development stage but refer to the dev branch for the entire single slot bootloader with functioning UART OTA update. 

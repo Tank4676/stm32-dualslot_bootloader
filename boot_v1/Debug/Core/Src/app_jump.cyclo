@@ -1,1 +1,4 @@
-../Core/Src/app_jump.c:16:6:bootloader__jumpt_to_app	1
+../Core/Src/app_jump.c:21:6:bootloader__jump_to_app	1
+../Core/Src/app_jump.c:42:9:is_app_valid	3
+../Core/Src/app_jump.c:54:10:sw_crc32	4
+../Core/Src/app_jump.c:70:9:verify_app_crc	2

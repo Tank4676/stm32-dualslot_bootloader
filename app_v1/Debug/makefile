@@ -60,7 +60,8 @@ app_v1.bin \
 
 
 # All Target
-all: main-build
+all:
+	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
 main-build: app_v1.elf secondary-outputs
@@ -96,6 +97,10 @@ clean:
 	-$(RM) app_v1.bin app_v1.elf app_v1.hex app_v1.list app_v1.map default.size.stdout
 	-@echo ' '
 
+post-build:
+	python3 "/home/tanmay/Projects/app_v1/import_crc.py"
+	-@echo ' '
+
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
@@ -105,6 +110,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified post-build
 
 -include ../makefile.targets

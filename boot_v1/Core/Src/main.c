@@ -97,14 +97,22 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_UART_Transmit(&huart3,(uint8_t*)"Inside the bootloader",21,100);
 
-  if(is_app_valid() && verify_app_crc())
+  if(wait_for_trigger())
   {
-      HAL_UART_Transmit(&huart3,(uint8_t*)"App valid, jumping...\r\n",23,100);
-      bootloader__jump_to_app();
+      HAL_UART_Transmit(&huart3, (uint8_t*)"Entering update mode\r\n", 22, 100);
+      // OTA update function will go here
   }
   else
   {
-      HAL_UART_Transmit(&huart3,(uint8_t*)"App invalid, staying in bootloader\r\n",36,100);
+      if(is_app_valid() && verify_app_crc())
+      {
+          HAL_UART_Transmit(&huart3, (uint8_t*)"App valid, jumping...\r\n", 23, 100);
+          bootloader__jump_to_app();
+      }
+      else
+      {
+          HAL_UART_Transmit(&huart3, (uint8_t*)"App invalid, staying in bootloader\r\n", 36, 100);
+      }
   }
   /* USER CODE END 2 */
 

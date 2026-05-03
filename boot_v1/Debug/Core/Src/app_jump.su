@@ -1,4 +1,8 @@
-../Core/Src/app_jump.c:21:6:bootloader__jump_to_app	24	static,ignoring_inline_asm
-../Core/Src/app_jump.c:42:9:is_app_valid	16	static
-../Core/Src/app_jump.c:54:10:sw_crc32	32	static
-../Core/Src/app_jump.c:70:9:verify_app_crc	88	static
+../Core/Src/app_jump.c:23:6:bootloader__jump_to_app	24	static,ignoring_inline_asm
+../Core/Src/app_jump.c:44:9:is_app_valid	16	static
+../Core/Src/app_jump.c:56:10:sw_crc32	32	static
+../Core/Src/app_jump.c:72:9:verify_app_crc	88	static
+../Core/Src/app_jump.c:91:9:wait_for_trigger	24	static
+../Core/Src/app_jump.c:109:6:flash_erase_app_slot	32	static
+../Core/Src/app_jump.c:130:19:flash_write_firmware	40	static
+../Core/Src/app_jump.c:149:9:ota_receive_firmware	360	static

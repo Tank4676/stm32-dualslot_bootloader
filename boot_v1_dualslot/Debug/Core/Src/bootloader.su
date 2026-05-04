@@ -1,9 +1,0 @@
-../Core/Src/bootloader.c:20:10:sw_crc32	12	static
-../Core/Src/bootloader.c:36:9:is_slot_valid	0	static
-../Core/Src/bootloader.c:45:9:verify_slot_crc	8	static
-../Core/Src/bootloader.c:57:6:bootloader_jump	0	static,ignoring_inline_asm
-../Core/Src/bootloader.c:75:9:wait_for_trigger	32	static
-../Core/Src/bootloader.c:93:6:flash_erase_slot	32	static
-../Core/Src/bootloader.c:121:19:flash_write_firmware	24	static
-../Core/Src/bootloader.c:141:9:ota_receive_firmware	360	static
-../Core/Src/bootloader.c:221:6:bootloader_run	112	static,ignoring_inline_asm

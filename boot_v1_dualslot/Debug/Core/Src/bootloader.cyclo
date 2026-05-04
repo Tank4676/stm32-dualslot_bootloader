@@ -1,9 +1,0 @@
-../Core/Src/bootloader.c:20:10:sw_crc32	3
-../Core/Src/bootloader.c:36:9:is_slot_valid	1
-../Core/Src/bootloader.c:45:9:verify_slot_crc	1
-../Core/Src/bootloader.c:57:6:bootloader_jump	1
-../Core/Src/bootloader.c:75:9:wait_for_trigger	4
-../Core/Src/bootloader.c:93:6:flash_erase_slot	2
-../Core/Src/bootloader.c:121:19:flash_write_firmware	4
-../Core/Src/bootloader.c:141:9:ota_receive_firmware	7
-../Core/Src/bootloader.c:221:6:bootloader_run	8

@@ -1,0 +1,3 @@
+../Core/Src/boot_descriptor.c:12:9:descriptor_read	1
+../Core/Src/boot_descriptor.c:21:6:descriptor_init_default	1
+../Core/Src/boot_descriptor.c:35:9:descriptor_write	5

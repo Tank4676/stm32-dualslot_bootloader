@@ -1,15 +1,8 @@
 """
-OTA firmware sender for STM32 bootloader.
+OTA firmware sender for STM32 dual slot bootloader.
 
 Usage:
-    python3 ota_send.py /dev/ttyACM0 /home/tanmay/Projects/app_v1/Debug/app_v1.bin
-
-Protocol:
-    1. Send 'UPDATE' to trigger bootloader update mode
-    2. Wait for 'READY' from bootloader
-    3. Send 4 bytes: firmware size (little endian)
-    4. Loop: send 256 byte chunk + 4 byte CRC32, wait for 'ACK'
-    5. Wait for 'DONE'
+    python3 ota_send.py /dev/ttyACM0 path/to/firmware.bin
 """
 
 import sys
@@ -18,11 +11,13 @@ import zlib
 import time
 import serial
 
-CHUNK_SIZE = 256
-BAUD = 115200
+CHUNK_SIZE     = 256
+BAUD           = 115200
+ERASE_TIMEOUT  = 15
+ACK_TIMEOUT    = 5
+DONE_TIMEOUT   = 10
 
-def wait_for(ser, expected, timeout=5):
-    """Read lines until we see the expected token or timeout."""
+def wait_for(ser, expected, timeout):
     start = time.time()
     buf = b""
     while time.time() - start < timeout:
@@ -55,7 +50,7 @@ def main():
     ser.write(b"UPDATE")
 
     # 2. Wait for READY
-    ok, msg = wait_for(ser, "READY", timeout=5)
+    ok, msg = wait_for(ser, "READY", timeout=10)
     if not ok:
         print(f"No READY received. Got: {msg}")
         sys.exit(1)
@@ -65,7 +60,15 @@ def main():
     print("Sending firmware size...")
     ser.write(struct.pack("<I", fw_size))
 
-    # 4. Send chunks
+    # 4. Wait for ERASED — bootloader is now ready to receive chunks
+    print("Waiting for slot erase...")
+    ok, msg = wait_for(ser, "ERASED", timeout=ERASE_TIMEOUT)
+    if not ok:
+        print(f"No ERASED received. Got: {msg}")
+        sys.exit(1)
+    print("Slot erased, sending chunks.")
+
+    # 5. Send chunks
     sent = 0
     chunk_index = 0
     while sent < fw_size:
@@ -75,7 +78,7 @@ def main():
         ser.write(chunk)
         ser.write(struct.pack("<I", crc))
 
-        ok, msg = wait_for(ser, "ACK", timeout=5)
+        ok, msg = wait_for(ser, "ACK", timeout=ACK_TIMEOUT)
         if not ok:
             print(f"\nNo ACK at chunk {chunk_index}. Got: {msg}")
             sys.exit(1)
@@ -86,8 +89,8 @@ def main():
 
     print()
 
-    # 5. Wait for DONE
-    ok, msg = wait_for(ser, "DONE", timeout=5)
+    # 6. Wait for DONE
+    ok, msg = wait_for(ser, "DONE", timeout=DONE_TIMEOUT)
     if ok:
         print("Update complete.")
     else:
